@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.test.app.mapper.BoardMapper">
+
+    <select id="findAll" resultType="org.mybatis.test.app.domain.Board">
+        select
+            board_id as boardId,
+            name,
+            title,
+            content
+        from
+            tbl_board;
+    </select>
+
+    <select id="findById" resultType="Board">
+        select
+            board_id as boardId,
+            name,
+            title,
+            content
+        from
+            tbl_board;
+        where
+            board_id = #{id}
+    </select>
+
+    <select id="findByName" resultType="Board">
+        select
+            name,
+            count(title)
+            title
+        from
+            tbl_board;
+        where
+            name = #{name}
+    </select>
+
+</mapper>

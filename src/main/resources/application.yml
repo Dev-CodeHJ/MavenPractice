@@ -1,15 +1,15 @@
-spring:
-  main:
-    allow-bean-definition-overriding: true
-
-  datasource :
-    driverClassName : com.mysql.cj.jdbc.Driver
-    url : jdbc:mysql://localhost:3306/bootex?serverTimezone=UTC&characterEncoding=UTF-8
-    username : root
-    password : 0000
-
-mybatis :
-  mapper-locations : classpath:mapper/**.xml
-  config-location : classpath:mybatis-config.xml
-
-server.port : 8080
+#spring:
+#  main:
+#    allow-bean-definition-overriding: true
+#
+#  datasource :
+#    driverClassName : com.mysql.cj.jdbc.Driver
+#    url : jdbc:mysql://localhost:3306/tbl_board?serverTimezone=UTC&characterEncoding=UTF-8
+#    username : root
+#    password : 0000
+#
+#mybatis :
+#  mapper-locations : classpath:dao/**.xml
+#  config-location : classpath:mybatis-config.xml
+#
+#server.port : 8080

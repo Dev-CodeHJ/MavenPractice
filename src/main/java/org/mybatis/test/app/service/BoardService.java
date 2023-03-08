@@ -1,29 +1,33 @@
 package org.mybatis.test.app.service;
 
-import lombok.RequiredArgsConstructor;
-import org.mybatis.test.app.domain.Board;
-import org.mybatis.test.app.mapper.BoardMapper;
+import org.mybatis.test.app.dao.BoardMapper;
+import org.mybatis.test.app.dto.BoardDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class BoardService {
     private final BoardMapper boardMapper;
 
-    public List<Board> findAll() {
-        List<Board> result = boardMapper.findAll();
+    public BoardService(BoardMapper boardMapper) {
+        this.boardMapper = boardMapper;
+    }
+
+    public List<BoardDto> findAll() {
+        List<BoardDto> result = boardMapper.findAll();
         return result;
     }
 
-    public Board findById(int id) {
-        Board result = boardMapper.findById(id);
+    public Optional<BoardDto> findById(int id) {
+        Optional<BoardDto> result = boardMapper.findById(id);
         return result;
     }
 
-    public Board findByName(String name) {
-        Board result = boardMapper.findByName(name);
-        return result;
-    }
+//    public int boardCount(String name) {
+//        Optional<BoardDto> result = boardMapper.boardCount(name);
+//        return result;
+//    }
 }

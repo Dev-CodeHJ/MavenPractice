@@ -10,7 +10,8 @@
 
 
     <typeAliases>
-        <typeAlias type="org.mybatis.test.app.domain.Board" alias="Board"/>
+        <typeAlias type="org.mybatis.test.app.dto.BoardDto" alias="dto"/>
+        <typeAlias type="org.mybatis.test.app.dao.BoardMapper" alias="mapper"/>
 
         </typeAliases>
         </configuration>

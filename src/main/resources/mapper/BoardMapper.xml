@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.test.app.mapper.BoardMapper">
+
+    <select id="findAll" resultType="dto">
+        select
+            *
+        from
+            board_dto;
+    </select>
+
+    <select id="findById" resultType="dto">
+        select
+            *
+        from
+            board_dto
+        where
+            id = #{id};
+    </select>
+
+    <select id="boardCount" resultType="int">
+        select
+            count(title)
+        from
+            board_dto
+        where
+        member_id = #{memberId};
+    </select>
+
+    <insert id="save">
+        insert into board_dto
+        values(#{id}, #{memberId}, #{title}, #{content})
+    </insert>
+</mapper>

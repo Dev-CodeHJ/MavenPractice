@@ -4,11 +4,10 @@ import lombok.*;
 
 @Data
 @Builder
-public record BoardDto(
-        int id,
-        String name,
-        String title,
-        String content
-) {
+public class BoardDto {
+        private int id;
+        private String memberId;
+        private String title;
+        private String content;
 
 }

@@ -27,8 +27,9 @@
         member_id = #{memberId};
     </select>
 
-    <insert id="save">
-        insert into board_dto
-        values(#{id}, #{memberId}, #{title}, #{content})
+    <insert id="save" parameterType="dto"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into board_dto (member_id, title, content)
+        values(#{memberId}, #{title}, #{content})
     </insert>
 </mapper>

@@ -14,10 +14,6 @@ import java.util.List;
 public class BoardService {
     private final BoardMapper mapper;
 
-    public void save(BoardDto dto) {
-        mapper.save(dto);
-    }
-
     public List<BoardDto> findAll() {
         List<BoardDto> result = mapper.findAll();
         return result;
@@ -31,5 +27,9 @@ public class BoardService {
     public int boardCount(String memberId) {
         int result = mapper.boardCount(memberId);
         return result;
+    }
+
+    public void save(BoardDto dto) {
+        mapper.save(dto);
     }
 }

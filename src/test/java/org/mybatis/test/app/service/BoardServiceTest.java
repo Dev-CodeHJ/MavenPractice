@@ -5,111 +5,100 @@ import org.mybatis.test.app.dto.BoardDto;
 import org.mybatis.test.app.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
-@WebAppConfiguration
 @SpringBootTest
 @Transactional
 class BoardServiceTest {
 
     @Autowired
-    private BoardMapper mapper;
+    BoardService service;
     @Autowired
-    private BoardService service;
+    BoardMapper mapper;
 
     @Test
-    void save() {
+    void create() {
         //given
         BoardDto dto = BoardDto.builder()
-                .memberId("H")
-                .title("title")
+                .memberId("khj")
+                .title("new title")
                 .content("hello")
                 .build();
 
         //when
-        mapper.save(dto);
+        service.create(dto);
 
         //then
-        assertThat(dto.getMemberId()).isEqualTo("H");
+        assertThat(dto).isEqualTo(mapper.findById(dto.getId()));
     }
 
     @Test
-    void findAll() {
-        //given
-        BoardDto dto1 = BoardDto.builder()
-                .memberId("H")
-                .title("title1")
-                .content("hello!")
-                .build();
-        mapper.save(dto1);
-
-
-        BoardDto dto2 = BoardDto.builder()
-                .memberId("J")
-                .title("title2")
-                .content("hello@")
-                .build();
-        mapper.save(dto2);
-
-        //when
-        List<BoardDto> result = service.findAll();
-
-        //then
-        assertThat(result.size()).isEqualTo(2);
-    }
-
-    @Test
-    void findById() {
+    void read() {
         //given
         BoardDto dto = BoardDto.builder()
-                .memberId("K")
+                .memberId("khj")
                 .title("new title")
-                .content("hihi")
+                .content("hello")
                 .build();
-        mapper.save(dto);
+        service.create(dto);
+
+        BoardDto dto1 = BoardDto.builder()
+                .memberId("khj")
+                .title("new title1")
+                .content("hello1")
+                .build();
+        service.create(dto1);
+
+        BoardDto dto2 = BoardDto.builder()
+                .memberId("hj")
+                .title("new title2")
+                .content("hello2")
+                .build();
+        service.create(dto2);
 
         //when
-        BoardDto result = service.findById(dto.getId());
+        List<BoardDto> boardList = service.read("khj");
 
         //then
-        assertThat(result.getMemberId()).isEqualTo("K");
-
+        assertThat(boardList.size()).isEqualTo(2);
     }
 
     @Test
-    void boardCount() {
+    void update() {
         //given
-        BoardDto dto1 = BoardDto.builder()
-                .memberId("K")
-                .title("title1")
-                .content("hello!")
-                .build();
-        mapper.save(dto1);
-
-
-        BoardDto dto2 = BoardDto.builder()
-                .memberId("K")
-                .title("title2")
-                .content("hello@")
-                .build();
-        mapper.save(dto2);
-
-        BoardDto dto3 = BoardDto.builder()
-                .memberId("HJ")
+        BoardDto dto = BoardDto.builder()
+                .memberId("khj")
                 .title("new title")
-                .content("hihi")
+                .content("hello")
                 .build();
-        mapper.save(dto3);
+        service.create(dto);
 
         //when
-        int count = service.boardCount("K");
+        String updateMessage = service.update(dto);
 
         //then
-        assertThat(count).isEqualTo(2);
+        System.out.println(updateMessage);
+    }
+
+    @Test
+    void delete() {
+        //given
+        BoardDto dto = BoardDto.builder()
+                .memberId("khj")
+                .title("new title")
+                .content("hello")
+                .build();
+        service.create(dto);
+
+        //when
+        String deleteMessage = service.delete(dto.getId());
+
+        //then
+        System.out.println(deleteMessage);
     }
 }

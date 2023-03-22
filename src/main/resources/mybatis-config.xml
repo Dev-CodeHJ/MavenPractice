@@ -11,7 +11,5 @@
 
     <typeAliases>
         <typeAlias type="org.mybatis.test.app.dto.BoardDto" alias="dto"/>
-        <typeAlias type="org.mybatis.test.app.mapper.BoardMapper" alias="mapper"/>
-
-        </typeAliases>
-        </configuration>
+    </typeAliases>
+</configuration>

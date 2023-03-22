@@ -9,7 +9,10 @@ import java.util.List;
 public interface BoardMapper {
      List<BoardDto> findAll();
      BoardDto findById(int id);
-     public int boardCount(String memberId);
+     List<BoardDto> findByMemberId(String memberId);
+     int boardCount(String memberId);
      void save(BoardDto dto);
+     void update(BoardDto dto);
+     void delete(int id);
 }
 

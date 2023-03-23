@@ -96,8 +96,8 @@ class BoardServiceTest {
         List<BoardDto> boardList = service.readMemberBoard("khj");
 
         //then
-        assertThat(boardList.size()).isEqualTo(2);
-        System.out.println("khj:boardList = " + boardList.size() + "건의 글이 조회되었습니다.");
+        assertThat(boardList.size()).isEqualTo(mapper.boardCount("khj"));
+        System.out.println("khj:boardList = " + mapper.boardCount("khj") + "건의 글이 조회되었습니다.");
     }
 
     @Test

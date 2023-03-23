@@ -21,7 +21,11 @@ public class BoardService {
         log.info("save id = {}", dto.getId());
     }
 
-    public List<BoardDto> read(String memberId) {
+    public List<BoardDto> readAll() {
+        return mapper.findAll();
+    }
+
+    public List<BoardDto> readMemberBoard(String memberId) {
 
         List<BoardDto> boardLIst = mapper.findByMemberId(memberId);
         return boardLIst;

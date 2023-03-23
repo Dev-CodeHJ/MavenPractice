@@ -14,4 +14,9 @@ public class BoardController {
 
     private final BoardService service;
 
+//    @PostMapping("/create")
+//    public String createBoard(BoardDto dto) {
+//        service.create(dto);
+//        return null;
+//    }
 }

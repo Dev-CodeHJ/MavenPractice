@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -38,7 +37,39 @@ class BoardServiceTest {
     }
 
     @Test
-    void read() {
+    void readAll() {
+        //given
+        BoardDto dto = BoardDto.builder()
+                .memberId("khj")
+                .title("new title")
+                .content("hello")
+                .build();
+        service.create(dto);
+
+        BoardDto dto1 = BoardDto.builder()
+                .memberId("jhb")
+                .title("new title1")
+                .content("hello1")
+                .build();
+        service.create(dto1);
+
+        BoardDto dto2 = BoardDto.builder()
+                .memberId("gnl")
+                .title("new title2")
+                .content("hello2")
+                .build();
+        service.create(dto2);
+
+        //when
+        List<BoardDto> boardList = service.readAll();
+
+        //then
+        assertThat(boardList.size()).isEqualTo(3);
+        System.out.println("All:boardList = " + boardList.size() + "건의 글이 조회되었습니다.");
+    }
+
+    @Test
+    void readMemberBoard() {
         //given
         BoardDto dto = BoardDto.builder()
                 .memberId("khj")
@@ -62,10 +93,11 @@ class BoardServiceTest {
         service.create(dto2);
 
         //when
-        List<BoardDto> boardList = service.read("khj");
+        List<BoardDto> boardList = service.readMemberBoard("khj");
 
         //then
         assertThat(boardList.size()).isEqualTo(2);
+        System.out.println("khj:boardList = " + boardList.size() + "건의 글이 조회되었습니다.");
     }
 
     @Test

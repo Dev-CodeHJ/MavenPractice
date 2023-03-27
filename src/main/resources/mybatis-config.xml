@@ -8,7 +8,6 @@
         <setting name="jdbcTypeForNull" value="NULL"/>
     </settings>
 
-
     <typeAliases>
         <typeAlias type="org.mybatis.test.app.dto.BoardDto" alias="dto"/>
     </typeAliases>

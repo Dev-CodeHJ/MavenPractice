@@ -18,7 +18,7 @@ public class BoardService {
     public void create(final BoardDto dto) {
 
         mapper.save(dto);
-        log.info("save id = {}", dto.getId());
+        log.info("save id = {}", dto.getBoardId());
     }
 
     public List<BoardDto> readAll() {
@@ -33,14 +33,14 @@ public class BoardService {
 
     public String update(BoardDto dto) {
 
-        Optional<Integer> dtoId = Optional.ofNullable(dto.getId());
+        Optional<Integer> dtoId = Optional.ofNullable(dto.getBoardId());
 
         if (dtoId.isPresent()) {
 
             mapper.update(dto);
-            log.info("update id = {}", dto.getId());
+            log.info("update id = {}", dto.getBoardId());
 
-            return dto.getId() + "번 글이 수정되었습니다.";
+            return dto.getBoardId() + "번 글이 수정되었습니다.";
 
         } else {
             throw new RuntimeException("업데이트할 글이 존재하지 않습니다.");

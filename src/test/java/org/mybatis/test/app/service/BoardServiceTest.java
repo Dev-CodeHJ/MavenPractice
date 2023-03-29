@@ -33,7 +33,7 @@ class BoardServiceTest {
         service.create(dto);
 
         //then
-        assertThat(dto).isEqualTo(mapper.findById(dto.getId()));
+        assertThat(dto).isEqualTo(mapper.findById(dto.getBoardId()));
     }
 
     @Test
@@ -128,7 +128,7 @@ class BoardServiceTest {
         service.create(dto);
 
         //when
-        String deleteMessage = service.delete(dto.getId());
+        String deleteMessage = service.delete(dto.getBoardId());
 
         //then
         System.out.println(deleteMessage);

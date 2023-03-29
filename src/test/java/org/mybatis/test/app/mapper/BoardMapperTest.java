@@ -1,8 +1,5 @@
 package org.mybatis.test.app.mapper;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mybatis.test.app.dto.BoardDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -57,7 +53,7 @@ class BoardMapperTest {
         mapper.save(dto);
 
         //when
-        BoardDto board = mapper.findById(dto.getId());
+        BoardDto board = mapper.findById(dto.getBoardId());
 
         //then
         assertThat(board).isEqualTo(dto);
@@ -141,7 +137,7 @@ class BoardMapperTest {
 
         //when
         mapper.save(dto);
-        BoardDto result = mapper.findById(dto.getId());
+        BoardDto result = mapper.findById(dto.getBoardId());
 
         //then
         assertThat(result).isEqualTo(dto);

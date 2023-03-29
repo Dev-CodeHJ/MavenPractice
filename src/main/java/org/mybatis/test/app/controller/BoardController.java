@@ -4,10 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.mybatis.test.app.dto.BoardDto;
 import org.mybatis.test.app.service.BoardService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@RestController
+@Controller
 @RequestMapping(value = "/board")
 @RequiredArgsConstructor
 public class BoardController {

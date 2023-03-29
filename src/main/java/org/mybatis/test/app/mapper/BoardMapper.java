@@ -8,12 +8,12 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
      List<BoardDto> findAll();
-     BoardDto findById(int id);
+     BoardDto findById(int boardId);
      List<BoardDto> findByMemberId(String memberId);
-
      int boardCount(String memberId);
+
      void save(BoardDto dto);
      void update(BoardDto dto);
-     void delete(int id);
+     void delete(int boardId);
 }
 

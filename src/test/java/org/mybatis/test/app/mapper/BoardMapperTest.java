@@ -20,71 +20,72 @@ class BoardMapperTest {
     @Test
     void findAll() {
         //given
-        BoardDto dto1 = BoardDto.builder()
+        BoardDto board1 = BoardDto.builder()
                 .memberId("H")
                 .title("title1")
                 .content("hello!")
                 .build();
-        mapper.save(dto1);
+        mapper.save(board1);
 
 
-        BoardDto dto2 = BoardDto.builder()
+        BoardDto board2 = BoardDto.builder()
                 .memberId("J")
                 .title("title2")
                 .content("hello@")
                 .build();
-        mapper.save(dto2);
+        mapper.save(board2);
 
         //when
         List<BoardDto> boardList = mapper.findAll();
 
         //then
         assertThat(boardList.size()).isEqualTo(2);
+        System.out.println("boardList.size() = " + boardList.size());
     }
 
     @Test
     void findById() {
         //given
-        BoardDto dto = BoardDto.builder()
+        BoardDto board = BoardDto.builder()
                 .memberId("K")
                 .title("new title")
                 .content("hihi")
                 .build();
-        mapper.save(dto);
+        mapper.save(board);
 
         //when
-        BoardDto board = mapper.findById(dto.getBoardId());
+        BoardDto findBoard = mapper.findById(board.getBoardId());
 
         //then
-        assertThat(board).isEqualTo(dto);
-        System.out.println("dto = " + dto);
+        assertThat(findBoard).isEqualTo(board);
         System.out.println("board = " + board);
+        System.out.println("findBoard = " + findBoard);
     }
 
     @Test
     void findByMemberId() {
         //given
-        BoardDto dto1 = BoardDto.builder()
+        BoardDto board1 = BoardDto.builder()
                 .memberId("K")
                 .title("title1")
                 .content("hello!")
                 .build();
-        mapper.save(dto1);
+        mapper.save(board1);
 
 
-        BoardDto dto2 = BoardDto.builder()
+        BoardDto board2 = BoardDto.builder()
                 .memberId("K")
                 .title("title2")
                 .content("hello@")
                 .build();
-        mapper.save(dto2);
+        mapper.save(board2);
 
-        BoardDto dto3 = BoardDto.builder()
+        BoardDto board3 = BoardDto.builder()
                 .memberId("HJ")
                 .title("new title")
                 .content("hihi")
                 .build();
-        mapper.save(dto3);
+        mapper.save(board3);
 
         //when
         List<BoardDto> memberBoardList = mapper.findByMemberId("K");
@@ -97,26 +98,26 @@ class BoardMapperTest {
     @Test
     void boardCount() {
         //given
-        BoardDto dto1 = BoardDto.builder()
+        BoardDto board1 = BoardDto.builder()
                 .memberId("K")
                 .title("title1")
                 .content("hello!")
                 .build();
-        mapper.save(dto1);
+        mapper.save(board1);
 
-        BoardDto dto2 = BoardDto.builder()
+        BoardDto board2 = BoardDto.builder()
                 .memberId("K")
                 .title("title2")
                 .content("hello@")
                 .build();
-        mapper.save(dto2);
+        mapper.save(board2);
 
-        BoardDto dto3 = BoardDto.builder()
+        BoardDto board3 = BoardDto.builder()
                 .memberId("HJ")
                 .title("new title")
                 .content("hihi")
                 .build();
-        mapper.save(dto3);
+        mapper.save(board3);
 
         //when
         int memberBoardCount = mapper.boardCount("K");
@@ -129,19 +130,19 @@ class BoardMapperTest {
     @Test
     void save() {
         //given
-        BoardDto dto = BoardDto.builder()
+        BoardDto board = BoardDto.builder()
                 .memberId("H")
                 .title("title")
                 .content("hello")
                 .build();
 
         //when
-        mapper.save(dto);
-        BoardDto result = mapper.findById(dto.getBoardId());
+        mapper.save(board);
+        BoardDto result = mapper.findById(board.getBoardId());
 
         //then
-        assertThat(result).isEqualTo(dto);
-        System.out.println("dto = " + dto);
+        assertThat(result).isEqualTo(board);
+        System.out.println("board = " + board);
         System.out.println("result = " + result);
 
     }

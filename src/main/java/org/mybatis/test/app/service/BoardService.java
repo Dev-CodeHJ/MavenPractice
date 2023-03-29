@@ -15,10 +15,10 @@ import java.util.Optional;
 public class BoardService {
     private final BoardMapper mapper;
 
-    public void create(final BoardDto dto) {
+    public void create(final BoardDto board) {
 
-        mapper.save(dto);
-        log.info("save id = {}", dto.getBoardId());
+        mapper.save(board);
+        log.info("save id = {}", board.getBoardId());
     }
 
     public List<BoardDto> readAll() {
@@ -26,49 +26,39 @@ public class BoardService {
     }
 
     public List<BoardDto> readMemberBoard(String memberId) {
-
-        List<BoardDto> boardLIst = mapper.findByMemberId(memberId);
-        return boardLIst;
+        return mapper.findByMemberId(memberId);
     }
 
-    public String update(BoardDto dto) {
+    public String update(BoardDto board) {
 
-        Optional<Integer> dtoId = Optional.ofNullable(dto.getBoardId());
+        mapper.update(board);
+        log.info("update id = {}", board.getBoardId());
 
-        if (dtoId.isPresent()) {
-
-            mapper.update(dto);
-            log.info("update id = {}", dto.getBoardId());
-
-            return dto.getBoardId() + "번 글이 수정되었습니다.";
-
-        } else {
-            throw new RuntimeException("업데이트할 글이 존재하지 않습니다.");
-        }
+        return board.getBoardId() + "번 글이 수정되었습니다.";
     }
 
-    public String delete(int id) {
+    public String delete(int boardId) {
 
-        Optional<BoardDto> foundDto = Optional.ofNullable(mapper.findById(id));
+        Optional<BoardDto> foundBoard = Optional.ofNullable(mapper.findById(boardId));
 
-        if (foundDto.isPresent()) {
+        if (foundBoard.isPresent()) {
 
-            mapper.delete(id);
-            return id + "번 글이 삭제되었습니다.";
+            mapper.delete(boardId);
+            return boardId + "번 글이 삭제되었습니다.";
 
         } else {
             throw new RuntimeException("삭제할 글이 없습니다.");
         }
     }
 
-    private void validate(final BoardDto dto) {
+    private void validate(final BoardDto board) {
 
-        if (dto == null) {
+        if (board == null) {
             log.warn("DTO cannot be null!");
             throw new RuntimeException("DTO cannot be null!");
         }
 
-        if (dto.getMemberId() == null) {
+        if (board.getMemberId() == null) {
             log.warn("Unknown member!");
             throw new RuntimeException("Unknown member!");
         }

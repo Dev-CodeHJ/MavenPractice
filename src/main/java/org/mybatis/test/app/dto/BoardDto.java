@@ -4,8 +4,10 @@ import lombok.*;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BoardDto {
-        private int BoardId;
+        private int boardId;
         private String memberId;
         private String title;
         private String content;

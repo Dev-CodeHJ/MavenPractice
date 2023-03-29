@@ -2,23 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.mybatis.test.app.mapper.BoardMapper">
 
-    <select id="findAll" resultType="dto">
+    <select id="findAll" resultType="BoardDto">
         select
             *
         from
             board_dto;
     </select>
 
-    <select id="findById" resultType="dto">
+    <select id="findById" resultType="BoardDto">
         select
             *
         from
             board_dto
         where
-            id = #{id};
+            board_id = #{boardId};
     </select>
 
-    <select id="findByMemberId" resultType="dto">
+    <select id="findByMemberId" resultType="BoardDto">
         select
             *
         from
@@ -29,28 +29,28 @@
 
     <select id="boardCount" resultType="int">
         select
-            count(title)
+            count(*)
         from
             board_dto
         where
             member_id = #{memberId};
     </select>
 
-    <insert id="save" parameterType="dto"
-            useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="BoardDto"
+            useGeneratedKeys="true" keyProperty="boardId">
         insert into board_dto (member_id, title, content)
         values(#{memberId}, #{title}, #{content})
     </insert>
 
-    <update id="update" parameterType="dto">
+    <update id="update" parameterType="BoardDto">
         update board_dto
         set title = #{title}, content = #{content}
-        where id = #{id}
+        where board_id = #{boardId}
     </update>
 
     <delete id="delete" parameterType="int">
         delete
         from board_dto
-        where id = #{id}
+        where board_id = #{boardId}
     </delete>
 </mapper>

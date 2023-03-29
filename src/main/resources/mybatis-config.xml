@@ -9,6 +9,7 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="org.mybatis.test.app.dto.BoardDto" alias="dto"/>
+        <typeAlias type="org.mybatis.test.app.dto.BoardDto" alias="BoardDto"/>
+        <typeAlias type="org.mybatis.test.app.dto.MemberDto" alias="MemberDto"/>
     </typeAliases>
 </configuration>

@@ -5,7 +5,7 @@ import org.mybatis.test.app.dto.MemberDto;
 
 @Mapper
 public interface MemberMapper {
-    MemberDto findByMember(MemberDto member);
+    MemberDto findByMember(String memberId);
     MemberDto login(String memberId, String pw);
 
     void join(MemberDto member);

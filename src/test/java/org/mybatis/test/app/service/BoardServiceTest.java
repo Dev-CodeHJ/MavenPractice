@@ -30,10 +30,11 @@ class BoardServiceTest {
                 .build();
 
         //when
-        service.create(board);
+        String createBoard = service.create(board);
 
         //then
         assertThat(board).isEqualTo(mapper.findById(board.getBoardId()));
+        System.out.println("createBoard = " + createBoard);
     }
 
     @Test

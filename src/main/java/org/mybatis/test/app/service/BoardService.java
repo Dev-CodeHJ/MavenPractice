@@ -15,10 +15,12 @@ import java.util.Optional;
 public class BoardService {
     private final BoardMapper mapper;
 
-    public void create(final BoardDto board) {
+    public String create(final BoardDto board) {
 
         mapper.save(board);
         log.info("save id = {}", board.getBoardId());
+
+        return board.getBoardId() + "번 글이 생성되었습니다.";
     }
 
     public List<BoardDto> readAll() {

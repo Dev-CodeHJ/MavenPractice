@@ -5,25 +5,17 @@
 
 <% request.setCharacterEncoding("UTF-8"); %>
 
-<!-- 한명의 회원정보를 담는 user클래스를 자바 빈즈로 사용 / scope:페이지 현재의 페이지에서만 사용-->
-
 <jsp:useBean id="member" class="dto.MemberDto" scope="page" />
 <jsp:setProperty name="member" property="memberId" />
 <jsp:setProperty name="member" property="pw" />
 <!DOCTYPE html>
 
 <html>
-
-<head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>나의 게시판 웬 사이트</title>
-
-</head>
-
-<body>
-
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>loginAction</title>
+    </head>
+    <body>
 	<%
 		MemberService service = new MemberService(); //인스턴스생성
 		int result = service.login(member.getMemberId(), member.getPw());

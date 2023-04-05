@@ -1,137 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<!-- 뷰포트 -->
-
-<meta name="viewport" content="width=device-width" initial-scale="1">
-
-<!-- 스타일시트 참조  -->
-
-<link rel="stylesheet" href="css/bootstrap.min.css">
-
-<title>jsp 게시판 웹사이트</title>
-
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+  <body>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-12 col-md-8 col-lg-6">
+            <div class="card bg-white">
+              <div class="card-body p-5">
+                <form class="mb-3 mt-md-4">
+                  <h2 class="fw-bold mb-2 text-uppercase ">로그인 페이지</h2>
+                  <p class=" mb-5">아이디와 비밀번호를 입력해 주세요!</p>
+                  <div class="mb-3">
+                    <label for="text" class="form-label ">아이디</label>
+                    <input type="text" class="form-control" id="memberId" placeholder="example123">
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label ">비밀번호</label>
+                    <input type="password" class="form-control" id="pw" placeholder="*******">
+                  </div>
+                  <p class="small"><a class="text-primary" href="forget-password">비밀번호를 잊으셨나요?</a></p>
+                  <div class="d-grid">
 
-<body>
+                  <button class="btn btn-outline-dark" button type="button" onclick="location.href='loginAction'">로그인</button>
 
- <!-- 네비게이션  -->
-
- <nav class="navbar navbar-default">
-
-  <div class="navbar-header">
-
-   <button type="button" class="navbar-toggle collapsed"
-
-    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-
-    aria-expaned="false">
-
-     <span class="icon-bar"></span>
-
-     <span class="icon-bar"></span>
-
-     <span class="icon-bar"></span>
-
-    </button>
-
-    <a class="navbar-brand" href="main">JSP 게시판</a>
-
-  </div>
-
-  <div class="collapse navbar-collapse" id="#bs-example-navbar-collapse-1">
-
-   <ul class="nav navbar-nav">
-
-    <li><a href="main">메인</a></li>
-
-    <li><a href="bbs">게시판</a></li>
-
-   </ul>
-
-
-   <ul class="nav navbar-nav navbar-right">
-
-    <li class="dropdown">
-
-     <a href="#" class="dropdown-toggle"
-
-      data-toggle="dropdown" role="button" aria-haspopup="true"
-
-      aria-expanded="false">접속하기<span class="caret"></span></a>
-
-     <ul class="dropdown-menu">
-
-      <li class="active"><a href="login">로그인</a></li>
-
-      <li><a href="join">회원가입</a></li>
-
-     </ul>
-
-    </li>
-
-   </ul>
-
-  </div>
-
- </nav>
-
- <!-- 로긴폼 -->
-
- <div class="container">
-
-  <div class="col-lg-4"></div>
-
-  <div class="col-lg-4">
-
-  <!-- 점보트론 -->
-
-   <div class="jumbotron" style="padding-top: 20px;">
-
-   <!-- 로그인 정보를 숨기면서 전송post -->
-
-   <form method="post" action="loginAction">
-
-    <h3 style="text-align: center;"> 로그인화면 </h3>
-
-    <div class="form-group">
-
-     <input type="text" class="form-control" placeholder="아이디" name="memberId" maxlength="20">
-
+                  </div>
+                </form>
+                <div>
+                  <p class="mb-0  text-center">계정이 없으신가요? <a href="join" class="text-primary fw-bold">회원가입</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-    <div class="form-group">
-
-     <input type="password" class="form-control" placeholder="비밀번호" name="pw" maxlength="20">
-
-    </div>
-
-    <input type="submit" class="btn btn-primary form-control" value="로그인">
-
-   </form>
-
-  </div>
-
- </div>
-
-</div>
- <!-- 애니매이션 담당 JQUERY -->
-
- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
- <!-- 부트스트랩 JS  -->
-
- <script src="js/bootstrap.js"></script>
-
-</body>
+  </body>
 </html>

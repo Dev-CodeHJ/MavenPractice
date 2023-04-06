@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -19,8 +20,10 @@ public class MemberController {
         return "login";
     }
 
+    @PostMapping("")
+
     @GetMapping("/join")
-    public String join(@ModelAttribute MemberDto member, Model model) {
+    public String join(@ModelAttribute("member") MemberDto member, Model model) {
         return "join";
     }
 }

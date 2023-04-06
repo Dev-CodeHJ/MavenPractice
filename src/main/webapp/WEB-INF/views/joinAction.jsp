@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="service.MemberService"%>
+<%@ page import="dao.MemberDao"%>
 <%@ page import="java.io.PrintWriter"%>
 <!-- 자바 클래스 사용 -->
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -16,10 +16,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시판 웹사이트</title>
+<title>회원가입액션</title>
 </head>
 <body>
  <%
+
+    MemberDao memberDao = new MemberDao();
+    int result = memberDao.join(member);
+    PrintWriter script = response.getWriter();
+
     if (member.getMemberId() == null || member.getPw() == null || member.getName() == null || member.getGender() == null || member.getEmail() == null){
 
          PrintWriter script = response.getWriter();

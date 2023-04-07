@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.io.PrintWriter"  %>
-<%@ page import = "org.mybatis.test.app.dao.MemberDao" %>
-<%@ page import = "org.mybatis.test.app.dto.MemberDto" %>
+<%@ page import = "dao.MemberDao" %>
+<%@ page import = "dto.MemberDto" %>
 <%@ page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">

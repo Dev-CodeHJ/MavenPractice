@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="dao.MemberDao"%>
+<%@ page import="mapper.MemberMapper"%>
 <%@ page import="java.io.PrintWriter"%>
 <!-- 자바 클래스 사용 -->
 <% request.setCharacterEncoding("UTF-8"); %>
@@ -20,10 +20,6 @@
 </head>
 <body>
  <%
-
-    MemberDao memberDao = new MemberDao();
-    int result = memberDao.join(member);
-    PrintWriter script = response.getWriter();
 
     if (member.getMemberId() == null || member.getPw() == null || member.getName() == null || member.getGender() == null || member.getEmail() == null){
 

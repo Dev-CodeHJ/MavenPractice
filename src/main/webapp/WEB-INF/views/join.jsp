@@ -17,6 +17,7 @@
             <div class="card bg-white">
               <div class="card-body p-5">
                 <form class="mb-3 mt-md-4">
+
                   <h2 class="fw-bold mb-5 text-uppercase ">회원가입 페이지</h2>
 
                   <div class="mb-3">

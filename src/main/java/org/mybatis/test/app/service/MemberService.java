@@ -12,15 +12,20 @@ import org.springframework.stereotype.Service;
 public class MemberService {
     private final MemberMapper mapper;
 
-    public String join(final MemberDto member) {
-
-        mapper.join(member);
-        return member.getName() + "님 회원가입을 축하드립니다.";
+    public Boolean join(MemberDto member) {
+        if (mapper.findByMember(member.getMemberId())==null) {
+            mapper.join(member);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public MemberDto login(String memberId, String pw) {
-
-        MemberDto loginMember = mapper.login(memberId, pw);
-        return loginMember;
+    public Boolean login(String memberId, String pw) {
+        MemberDto member = mapper.findByMember(memberId);
+        if (member != null) {
+            return member.getPw().equals(pw);
+        }
+        return false;
     }
 }

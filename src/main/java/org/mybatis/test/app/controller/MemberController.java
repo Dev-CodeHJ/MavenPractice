@@ -14,13 +14,4 @@ public class MemberController {
 
     private final MemberService service;
 
-    @GetMapping("/login")
-    public String login(@ModelAttribute("member") MemberDto member, Model model) {
-        return "login";
-    }
-
-    @GetMapping("/join")
-    public String join(@ModelAttribute("member") MemberDto member, Model model) {
-        return "join";
-    }
 }

@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -31,11 +30,11 @@ class MemberServiceTest {
                 .build();
 
         //when
-        String joinMessage = service.join(member);
+        Boolean joinValidation = service.join(member);
 
         //then
-        assertThat(mapper.findByMember("gnlwls0127")).isEqualTo(member);
-        System.out.println("joinMessage = " + joinMessage);
+        assertThat(joinValidation).isTrue();
+        System.out.println("joinValidation = " + joinValidation);
     }
 
     @Test
@@ -51,10 +50,10 @@ class MemberServiceTest {
         mapper.join(member);
 
         //when
-        MemberDto loginMember = service.login(member.getMemberId(), member.getPw());
+        Boolean loginValidation = service.login(member.getMemberId(), member.getPw());
 
         //then
-        assertThat(loginMember).isEqualTo(member);
-        System.out.println("loginMember.getPw() = " + loginMember.getPw());
+        assertThat(loginValidation).isTrue();
+        System.out.println("loginValidation = " + loginValidation);
     }
 }

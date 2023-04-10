@@ -21,6 +21,7 @@
 <body>
  <%
 
+
     if (member.getMemberId() == null || member.getPw() == null || member.getName() == null || member.getGender() == null || member.getEmail() == null){
 
          PrintWriter script = response.getWriter();

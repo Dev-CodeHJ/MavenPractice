@@ -13,6 +13,9 @@ public class MemberService {
     private final MemberMapper mapper;
 
     public Boolean join(MemberDto member) {
+
+        System.out.println( "HI2");
+
         if (mapper.findByMember(member.getMemberId())==null) {
             mapper.join(member);
             return true;

@@ -13,10 +13,12 @@
 </head>
   <body>
       	<script type="text/javascript">
-      	var check=${check};
-  		var message = "${msg}";
-  		if(check==2)
-  		alert(message);
+            var check="${check}";
+            var message = "${msg}";
+            if(check==2)
+            alert(message);
+
+
   		</script>
     <div class="vh-100 d-flex justify-content-center align-items-center">
       <div class="container">
@@ -24,23 +26,23 @@
           <div class="col-12 col-md-8 col-lg-6">
             <div class="card bg-white">
               <div class="card-body p-5">
-                <form class="mb-3 mt-md-4">
+                <form class="mb-3 mt-md-4" action="/join" method="POST">
 
                   <h2 class="fw-bold mb-5 text-uppercase ">회원가입 페이지</h2>
 
                   <div class="mb-3">
                     <label for="text" class="form-label ">아이디</label>
-                    <input type="text" class="form-control" id="memberId" placeholder="example123">
+                    <input type="text" class="form-control" name ="member_id" id="member_id" placeholder="example123">
                   </div>
 
                   <div class="mb-3">
                     <label for="password" class="form-label ">비밀번호</label>
-                    <input type="password" class="form-control" id="pw" placeholder="*******">
+                    <input type="password" class="form-control" name="pw" id="pw" placeholder="*******">
                   </div>
 
                   <div class="mb-3">
                     <label for="text" class="form-label ">이름</label>
-                    <input type="text" class="form-control" id="name" placeholder="홍길동">
+                    <input type="text" class="form-control" name = "name" id="name" placeholder="홍길동">
                   </div>
                 <div class="col-md-6 mb-4">
 
@@ -62,11 +64,11 @@
 
                   <div class="mb-4">
                     <label for="email" class="form-label ">이메일</label>
-                    <input type="email" class="form-control" id="email" placeholder="ex12@ex.com">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="ex12@ex.com">
                   </div>
 
                   <div class="d-grid">
-                  <button class="btn btn-outline-dark" button type="button" onclick="location.href='joinAction'">회원가입</button>
+                    <button class="btn btn-outline-dark" type="submit">회원가입</button>
                   </div>
 
                 </form>
@@ -84,6 +86,6 @@
             <!-- Bootstrap core JS-->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
             <!-- Core theme JS-->
-            <script src="../resources/js/scripts.js"></script>
+           <script src="../resources/static/js/scripts.js"></script>
   </body>
 </html>

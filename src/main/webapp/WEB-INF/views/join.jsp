@@ -10,23 +10,57 @@
     <meta name="author" content="" />
     <title>회원가입 페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-  <body>
       	<script type="text/javascript">
-            var check="${check}";
+
+      	function joinCheck(){
+
+            if(document.join.member_id.value=="" || document.join.member_id.value==null){
+            alert("아이디를 입력해주세요.");
+            document.join.member_id.focus();
+            exit;
+            }
+
+            else if(document.join.pw.value=="" || document.join.pw.value==null){
+            alert("비밀번호를 입력해주세요.");
+            document.join.pw.focus();
+            exit;
+            }
+
+            else if(document.join.name.value=="" || document.join.name.value==null){
+            alert("이름을 입력해주세요.");
+            document.join.name.focus();
+            exit;
+            }
+
+            else if(document.join.gender.value=="" || document.join.gender.value==null){
+            alert("성별을 체크해주세요.");
+            document.join.gender.focus();
+            exit;
+            }
+
+            else if(document.join.email.value=="" || document.join.email.value==null){
+            alert("이메일을 입력해주세요.");
+            document.join.email.focus();
+            exit;
+            }
+
+            else {
+            var check = "${check}";
             var message = "${msg}";
             if(check==2)
             alert(message);
-
-
+            }
+            };
   		</script>
+</head>
+  <body>
     <div class="vh-100 d-flex justify-content-center align-items-center">
       <div class="container">
         <div class="row d-flex justify-content-center">
           <div class="col-12 col-md-8 col-lg-6">
             <div class="card bg-white">
               <div class="card-body p-5">
-                <form class="mb-3 mt-md-4" action="/join" method="POST">
+                <form class="mb-3 mt-md-4" name="join" action="/join" method="POST">
 
                   <h2 class="fw-bold mb-5 text-uppercase ">회원가입 페이지</h2>
 
@@ -49,14 +83,14 @@
                   <h6 class="mb-2 pb-1">성별</h6>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                      value="option1" checked />
+                    <input class="form-check-input" type="radio" name="gender" id="maleGender"
+                      value="남자" />
                     <label class="form-check-label" for="maleGender">남자</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                      value="option2" />
+                    <input class="form-check-input" type="radio" name="gender" id="femaleGender"
+                      value="여자" />
                     <label class="form-check-label" for="femaleGender">여자</label>
                   </div>
 
@@ -68,7 +102,7 @@
                   </div>
 
                   <div class="d-grid">
-                    <button class="btn btn-outline-dark" type="submit">회원가입</button>
+                    <button class="btn btn-outline-dark" type="submit" onclick="joinCheck();">회원가입</button>
                   </div>
 
                 </form>

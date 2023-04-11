@@ -36,10 +36,8 @@ public class HomeController {
     @GetMapping("/join")
     public String join(Model model) {
 
-        System.out.println("Hi");
+        System.out.println("joinPage");
         model.addAttribute("check", 1);
-
-
 
         return "join";
     }
@@ -47,26 +45,23 @@ public class HomeController {
     @PostMapping("/join")
     public ModelAndView join(ModelAndView model, HttpServletRequest request) {
 
-        MemberDto dto =new MemberDto();
+        MemberDto member =new MemberDto();
 
-        dto.setPw(request.getParameter("pw"));
-        dto.setName(request.getParameter("name"));
-        dto.setMemberId(request.getParameter("member_id"));
-        dto.setGender(request.getParameter("inlineRadioOptions"));
-        dto.setEmail(request.getParameter("email"));
-        System.out.println("12");
-        System.out.println("1:"+dto.getMemberId());
-        System.out.println("2:"+dto.getPw());
-        System.out.println("3:"+dto.getName());
-        System.out.println("4:"+dto.getGender());
-        System.out.println("5:"+dto.getEmail());
-        //model.addAttribute("check", 2);
+        member.setMemberId(request.getParameter("member_id"));
+        member.setPw(request.getParameter("pw"));
+        member.setName(request.getParameter("name"));
+        member.setGender(request.getParameter("gender"));
+        member.setEmail(request.getParameter("email"));
+        System.out.println("doJoin");
+        System.out.println("1:"+member.getMemberId());
+        System.out.println("2:"+member.getPw());
+        System.out.println("3:"+member.getName());
+        System.out.println("4:"+member.getGender());
+        System.out.println("5:"+member.getEmail());
         model.addObject("check", 2);
-        if (memberService.join(dto)) {
-            //model.addAttribute("msg", "회원가입이 완료되었습니다.");
+        if (memberService.join(member)) {
             model.addObject("msg", "회원가입이 완료되었습니다.");
         } else{
-            //model.addAttribute("msg","중복된 아이디가 존재합니다");
             model.addObject("msg", "중복된 아이디가 존재합니다.");
         }
         return model;

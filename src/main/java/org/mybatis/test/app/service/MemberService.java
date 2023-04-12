@@ -12,16 +12,15 @@ import org.springframework.stereotype.Service;
 public class MemberService {
     private final MemberMapper mapper;
 
-    public Boolean join(MemberDto member) {
+    public String join(MemberDto member) {
 
-        System.out.println( "HI2");
-
-        if (mapper.findByMember(member.getMemberId())==null) {
+        if (mapper.findByMember(member.getMemberId()) != null) {
+            return "exist";
+        } else if (joinCheck(member).equals("ok")) {
             mapper.join(member);
-            return true;
-        } else {
-            return false;
+            return joinCheck(member);
         }
+        return joinCheck(member);
     }
 
     public Boolean login(String memberId, String pw) {
@@ -30,5 +29,34 @@ public class MemberService {
             return member.getPw().equals(pw);
         }
         return false;
+    }
+
+    public String joinCheck(final MemberDto member) {
+
+        if (member.getMemberId() == null || member.getMemberId().isBlank()) {
+            log.warn("The input memberId cannot be null or empty.");
+            return "memberId";
+        }
+
+        else if (member.getPw() == null || member.getPw().isBlank()) {
+            log.warn("The input pw cannot be null or empty.");
+            return "pw";
+        }
+
+        else if (member.getName() == null || member.getName().isBlank()) {
+            log.warn("The input name cannot be null or empty.");
+            return "name";
+        }
+
+        else if (member.getGender() == null || member.getGender().isBlank()) {
+            log.warn("The input gender cannot be null or empty.");
+            return "gender";
+        }
+
+        else if (member.getEmail() == null || member.getEmail().isBlank()) {
+            log.warn("The input email cannot be null or empty.");
+            return "email";
+        }
+        return "ok";
     }
 }

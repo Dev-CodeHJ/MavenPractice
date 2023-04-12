@@ -59,7 +59,7 @@ public class HomeController {
         System.out.println("4:"+member.getGender());
         System.out.println("5:"+member.getEmail());
         model.addObject("check", 2);
-        if (memberService.join(member)) {
+        if (memberService.join(member).equals("ok")) {
             model.addObject("msg", "회원가입이 완료되었습니다.");
         } else{
             model.addObject("msg", "중복된 아이디가 존재합니다.");

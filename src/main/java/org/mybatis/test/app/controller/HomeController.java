@@ -47,22 +47,27 @@ public class HomeController {
 
         MemberDto member =new MemberDto();
 
+        System.out.println("controller.join");
+
         member.setMemberId(request.getParameter("member_id"));
         member.setPw(request.getParameter("pw"));
         member.setName(request.getParameter("name"));
         member.setGender(request.getParameter("gender"));
         member.setEmail(request.getParameter("email"));
-        System.out.println("doJoin");
-        System.out.println("1:"+member.getMemberId());
-        System.out.println("2:"+member.getPw());
-        System.out.println("3:"+member.getName());
-        System.out.println("4:"+member.getGender());
-        System.out.println("5:"+member.getEmail());
+
+        String msg = memberService.join(member);
         model.addObject("check", 2);
-        if (memberService.join(member).equals("ok")) {
-            model.addObject("msg", "회원가입이 완료되었습니다.");
-        } else{
-            model.addObject("msg", "중복된 아이디가 존재합니다.");
+
+        if (msg.equals("exist")) {
+            System.out.println("con.ex");
+            model.addObject("msg", msg);
+        } else if (msg.equals("ok")){
+            System.out.println("con.ok");
+            model.addObject("msg", msg);
+        } else {
+            System.out.println("con.blk");
+            System.out.println("msg = " + msg);
+            model.addObject("msg", msg);
         }
         return model;
     }

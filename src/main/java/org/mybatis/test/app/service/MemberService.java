@@ -14,13 +14,20 @@ public class MemberService {
 
     public String join(MemberDto member) {
 
+        System.out.println("service.join");
+
+        String msg = joinCheck(member);
+
         if (mapper.findByMember(member.getMemberId()) != null) {
+            System.out.println("ser.ex");
             return "exist";
-        } else if (joinCheck(member).equals("ok")) {
+        } else if (msg.equals("ok")) {
+            System.out.println("ser.ok");
             mapper.join(member);
-            return joinCheck(member);
+            return msg;
         }
-        return joinCheck(member);
+        System.out.println("ser.blk");
+        return msg;
     }
 
     public Boolean login(String memberId, String pw) {
@@ -35,7 +42,7 @@ public class MemberService {
 
         if (member.getMemberId() == null || member.getMemberId().isBlank()) {
             log.warn("The input memberId cannot be null or empty.");
-            return "memberId";
+            return "member_id";
         }
 
         else if (member.getPw() == null || member.getPw().isBlank()) {

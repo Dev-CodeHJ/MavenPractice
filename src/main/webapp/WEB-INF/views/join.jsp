@@ -10,48 +10,6 @@
     <meta name="author" content="" />
     <title>회원가입 페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-      	<script type="text/javascript">
-
-      	function joinCheck(){
-
-            if(document.join.member_id.value=="" || document.join.member_id.value==null){
-            alert("아이디를 입력해주세요.");
-            document.join.member_id.focus();
-            exit;
-            }
-
-            else if(document.join.pw.value=="" || document.join.pw.value==null){
-            alert("비밀번호를 입력해주세요.");
-            document.join.pw.focus();
-            exit;
-            }
-
-            else if(document.join.name.value=="" || document.join.name.value==null){
-            alert("이름을 입력해주세요.");
-            document.join.name.focus();
-            exit;
-            }
-
-            else if(document.join.gender.value=="" || document.join.gender.value==null){
-            alert("성별을 체크해주세요.");
-            document.join.gender.focus();
-            exit;
-            }
-
-            else if(document.join.email.value=="" || document.join.email.value==null){
-            alert("이메일을 입력해주세요.");
-            document.join.email.focus();
-            exit;
-            }
-
-            else {
-            var check = "${check}";
-            var message = "${msg}";
-            if(check==2)
-            alert(message);
-            }
-            };
-  		</script>
 </head>
   <body>
     <div class="vh-100 d-flex justify-content-center align-items-center">
@@ -60,8 +18,25 @@
           <div class="col-12 col-md-8 col-lg-6">
             <div class="card bg-white">
               <div class="card-body p-5">
-                <form class="mb-3 mt-md-4" name="join" action="/join" method="POST">
+                <form class="mb-3 mt-md-4" name="join" onsubmit="return confirm('회원가입 하시겠습니까?');" method="POST">
 
+                    <script type="text/javascript">
+
+                        function joinCheck() {
+                            var check = "${check}";
+                            var message = "${msg}";
+                            if(check==2){
+                                if(message=="exist"){
+                                    alert("아이디가 이미 존재합니다.");
+                                }else if(message=="ok"){
+                                    alert("회원가입에 성공하셨습니다.");
+                                    location.href='/login';
+                                }else{
+                                    alert("입력이 안된 사항이 있습니다!");
+                                }
+                            }
+                        }
+                    </script>
                   <h2 class="fw-bold mb-5 text-uppercase ">회원가입 페이지</h2>
 
                   <div class="mb-3">
@@ -102,7 +77,7 @@
                   </div>
 
                   <div class="d-grid">
-                    <button class="btn btn-outline-dark" type="submit" onclick="joinCheck();">회원가입</button>
+                    <button class="btn btn-outline-dark" type="submit" id="joinBtn" onclick="javascript:joinCheck()">회원가입</button>
                   </div>
 
                 </form>

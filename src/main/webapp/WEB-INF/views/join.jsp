@@ -22,18 +22,16 @@
 
                     <script type="text/javascript">
 
-                        function joinCheck() {
-                            var check = "${check}";
-                            var message = "${msg}";
-                            if(check==2){
-                                if(message=="exist"){
-                                    alert("아이디가 이미 존재합니다.");
-                                }else if(message=="ok"){
-                                    alert("회원가입에 성공하셨습니다.");
-                                    location.href='/login';
-                                }else{
-                                    alert("입력이 안된 사항이 있습니다!");
-                                }
+                    var check = "${check}";
+                    var message = "${msg}";
+                        if(check==2){
+                            if(message=="ok"){
+                                alert("회원가입에 성공하셨습니다.");
+                                location.href='/login';
+                            }else if(message=="exist"){
+                                alert("아이디가 이미 존재합니다.");
+                            }else{
+                                alert("입력이 안된 사항이 있습니다!");
                             }
                         }
                     </script>
@@ -77,7 +75,7 @@
                   </div>
 
                   <div class="d-grid">
-                    <button class="btn btn-outline-dark" type="submit" id="joinBtn" onclick="javascript:joinCheck()">회원가입</button>
+                    <input class="btn btn-outline-dark" type="submit" id="joinBtn" value="회원가입" ></input>
                   </div>
 
                 </form>

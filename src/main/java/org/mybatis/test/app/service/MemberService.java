@@ -19,14 +19,14 @@ public class MemberService {
         String msg = joinCheck(member);
 
         if (mapper.findByMember(member.getMemberId()) != null) {
-            System.out.println("ser.ex");
+            System.out.println("중복된회원");
             return "exist";
         } else if (msg.equals("ok")) {
-            System.out.println("ser.ok");
             mapper.join(member);
+            System.out.println("회원가입성공");
             return msg;
         }
-        System.out.println("ser.blk");
+        System.out.println("미입력사항있음");
         return msg;
     }
 

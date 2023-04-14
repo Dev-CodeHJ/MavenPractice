@@ -59,16 +59,17 @@ public class HomeController {
         model.addObject("check", 2);
 
         if (msg.equals("exist")) {
-            System.out.println("con.ex");
+            System.out.println("controller.exist");
             model.addObject("msg", msg);
         } else if (msg.equals("ok")){
-            System.out.println("con.ok");
+            System.out.println("controller.ok");
             model.addObject("msg", msg);
         } else {
-            System.out.println("con.blk");
+            System.out.println("controller.blank");
             System.out.println("msg = " + msg);
             model.addObject("msg", msg);
         }
+        System.out.println("model = " + model);
         return model;
     }
 

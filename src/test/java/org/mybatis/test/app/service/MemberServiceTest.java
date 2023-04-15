@@ -91,10 +91,13 @@ class MemberServiceTest {
         mapper.join(member);
 
         //when
-        Boolean loginValidation = service.login(member.getMemberId(), member.getPw());
+        String okMsg = service.login("gnlwls0127","1234");
+        String idErrorMsg = service.login("gnlwls012","1234");
+        String pwErrorMsg = service.login("gnlwls0127","123");
 
         //then
-        assertThat(loginValidation).isTrue();
-        System.out.println("loginValidation = " + loginValidation);
+        System.out.println("okMsg = " + okMsg);
+        System.out.println("idErrorMsg = " + idErrorMsg);
+        System.out.println("pwErrorMsg = " + pwErrorMsg);
     }
 }

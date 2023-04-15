@@ -84,6 +84,9 @@
                   <p class="mb-0  text-center">계정이 이미 있으신가요? <a href="login" class="text-primary fw-bold">로그인하러 가기</a></p>
                 </div>
 
+                <br>
+                <h4 class="mb-0  text-center"><a href="/" class="text-secondary fw-bold">홈페이지로 돌아가기</a></h4>
+
               </div>
             </div>
           </div>

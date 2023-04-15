@@ -74,8 +74,23 @@ public class HomeController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+
+        model.addAttribute("check", 1);
+
         return "login";
     }
 
+//    @PostMapping("login")
+//    public  ModelAndView login(ModelAndView model, HttpServletRequest request) {
+//
+//        MemberDto member = new MemberDto();
+//
+//        member.setMemberId(request.getParameter("member_id"));
+//        member.setPw(request.getParameter("pw"));
+//
+//        memberService.login(member.getMemberId(), member.getPw())
+//        model.addObject("check", 2);
+//
+//    }
 }

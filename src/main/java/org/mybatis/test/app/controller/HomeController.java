@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -81,16 +83,20 @@ public class HomeController {
         return "login";
     }
 
-//    @PostMapping("login")
-//    public  ModelAndView login(ModelAndView model, HttpServletRequest request) {
-//
-//        MemberDto member = new MemberDto();
-//
-//        member.setMemberId(request.getParameter("member_id"));
-//        member.setPw(request.getParameter("pw"));
-//
-//        memberService.login(member.getMemberId(), member.getPw())
-//        model.addObject("check", 2);
-//
-//    }
+    @PostMapping("login")
+    public ModelAndView login(ModelAndView model, HttpServletRequest request) {
+
+        HttpSession session = request.getSession();
+
+        MemberDto member = new MemberDto();
+
+        member.setMemberId(request.getParameter("member_id"));
+        member.setPw(request.getParameter("pw"));
+
+        Optional<MemberDto> loginMember = memberService.login(member.getMemberId(), member.getPw());
+        model.addObject("check", 2);
+
+        model.addObject(loginMember);
+        return model;
+    }
 }

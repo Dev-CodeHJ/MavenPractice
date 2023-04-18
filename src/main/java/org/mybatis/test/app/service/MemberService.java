@@ -26,18 +26,14 @@ public class MemberService {
         return msg;
     }
 
-    public String login(String memberId, String pw) {
+    public Optional<MemberDto> login(String memberId, String pw) {
 
         Optional<MemberDto> idPassMember = Optional.ofNullable(mapper.findByMember(memberId));
 
         if (idPassMember.isPresent()) {
-            if (idPassMember.get().getPw().equals(pw)){
-                MemberDto member = mapper.login(memberId, pw);
-                return "로그인에 성공하셨습니다.";
-            }
-            return "비밀번호가 올바르지 않습니다.";
+            if (idPassMember.get().getPw().equals(pw)) return Optional.ofNullable(mapper.login(memberId, pw));
         }
-        return "존재하지 않는 아이디입니다.";
+        return Optional.empty();
     }
 
     public String joinCheck(final MemberDto member) {

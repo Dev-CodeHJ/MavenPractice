@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -53,7 +55,7 @@ class MemberServiceTest {
         //then
         assertThat(success).isEqualTo("ok");
         assertThat(exist).isEqualTo("exist");
-        assertThat(blank).isEqualTo("memberId");
+        assertThat(blank).isEqualTo("member_id");
         System.out.println("member = " + member);
         System.out.println("exist = " + exist);
         System.out.println("blank = " + blank);
@@ -91,13 +93,16 @@ class MemberServiceTest {
         mapper.join(member);
 
         //when
-        String okMsg = service.login("gnlwls0127","1234");
-        String idErrorMsg = service.login("gnlwls012","1234");
-        String pwErrorMsg = service.login("gnlwls0127","123");
+        Optional<MemberDto> loginMember = service.login("gnlwls0127", "1234");
+        Optional<MemberDto> nonMemberId = service.login("gnlwls012", "1234");
+        Optional<MemberDto> nonPw = service.login("gnlwls0127", "123");
 
         //then
-        System.out.println("okMsg = " + okMsg);
-        System.out.println("idErrorMsg = " + idErrorMsg);
-        System.out.println("pwErrorMsg = " + pwErrorMsg);
+        assertThat(loginMember).isEqualTo(Optional.of(member));
+        assertThat(nonMemberId).isEmpty();
+        assertThat(nonPw).isEmpty();
+        System.out.println("loginMember = " + loginMember);
+        System.out.println("nonMemberId = " + nonMemberId);
+        System.out.println("nonPw = " + nonPw);
     }
 }

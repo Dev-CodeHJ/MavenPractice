@@ -28,12 +28,16 @@ public class MemberService {
 
     public Optional<MemberDto> login(String memberId, String pw) {
 
+        System.out.println("service.login");
         Optional<MemberDto> idPassMember = Optional.ofNullable(mapper.findByMember(memberId));
+        System.out.println("idPassMember = " + idPassMember);
 
-        if (idPassMember.isPresent()) {
-            if (idPassMember.get().getPw().equals(pw)) return Optional.ofNullable(mapper.login(memberId, pw));
+        if (idPassMember.isEmpty()) {
+            System.out.println("memberId.Empty");
+        } else if (idPassMember.get().getPw().equals(pw)) {
+            System.out.println("pw.OK");
         }
-        return Optional.empty();
+        return idPassMember;
     }
 
     public String joinCheck(final MemberDto member) {

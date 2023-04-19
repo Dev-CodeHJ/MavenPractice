@@ -86,17 +86,29 @@ public class HomeController {
     @PostMapping("login")
     public ModelAndView login(ModelAndView model, HttpServletRequest request) {
 
-        HttpSession session = request.getSession();
+
+        System.out.println("controller.login");
 
         MemberDto member = new MemberDto();
 
-        member.setMemberId(request.getParameter("member_id"));
-        member.setPw(request.getParameter("pw"));
-
-        Optional<MemberDto> loginMember = memberService.login(member.getMemberId(), member.getPw());
+        Optional<MemberDto> loginMember = memberService.login(request.getParameter("member_id"),request.getParameter("pw"));
+        System.out.println("loginMember = " + loginMember);
         model.addObject("check", 2);
 
-        model.addObject(loginMember);
+        if (loginMember.isEmpty()) {
+            model.addObject("msg", "empty");
+        } else {
+            HttpSession session = request.getSession();
+            session.setAttribute("loginMember", loginMember);
+            System.out.println("session = " + session);
+
+            model.addObject("msg", "ok");
+        }
         return model;
+    }
+
+    @GetMapping("/logout")
+    public String logout(Model model) {
+        return "logout";
     }
 }

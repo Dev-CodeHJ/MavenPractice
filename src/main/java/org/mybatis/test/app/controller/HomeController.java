@@ -92,7 +92,6 @@ public class HomeController {
         MemberDto member = new MemberDto();
 
         Optional<MemberDto> loginMember = memberService.login(request.getParameter("member_id"),request.getParameter("pw"));
-        System.out.println("loginMember = " + loginMember);
         model.addObject("check", 2);
 
         if (loginMember.isEmpty()) {
@@ -100,7 +99,11 @@ public class HomeController {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("loginMember", loginMember);
-            System.out.println("session = " + session);
+            System.out.println("loginMember = " + loginMember);
+
+            String name = loginMember.get().getName();
+            session.setAttribute("name",name);
+            System.out.println("name = " + name);
 
             model.addObject("msg", "ok");
         }

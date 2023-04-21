@@ -8,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>home page</title>
+    <title>메인페이지</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
 </head>
     <body>
-
+            <!-- 로그인 하지 않았을 경우 -->
     <% if(session.getAttribute("loginMember")==null) { %>
 
         <div class="d-flex" id="wrapper">
@@ -54,6 +54,7 @@
             </div>
         </div>
 
+    <!-- 로그인 했을 경우 -->
     <% } else { %>
 
         <div class="d-flex" id="wrapper">
@@ -81,8 +82,8 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">Action</a>
-                                        <a class="dropdown-item" href="#!">Another action</a>
+                                        <a class="dropdown-item" href="updateMember">회원정보 수정</a>
+                                        <a class="dropdown-item" href="#!">회원 탈퇴</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="logout">로그아웃</a>
                                     </div>
@@ -94,7 +95,7 @@
                 <!-- Page content-->
                 <div class="container-fluid">
                     <h1 class="mt-4">홈페이지</h1>
-                    <p>환영합니다.</p>
+                    <h4 class="mt-3"> <%= session.getAttribute("name") %>님, 환영합니다.</h4>
                 </div>
             </div>
         </div>

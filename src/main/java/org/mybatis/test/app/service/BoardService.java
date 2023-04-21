@@ -56,8 +56,8 @@ public class BoardService {
     private void validate(final BoardDto board) {
 
         if (board == null) {
-            log.warn("DTO cannot be null!");
-            throw new RuntimeException("DTO cannot be null!");
+            log.warn("board cannot be null!");
+            throw new RuntimeException("board cannot be null!");
         }
 
         if (board.getMemberId() == null) {

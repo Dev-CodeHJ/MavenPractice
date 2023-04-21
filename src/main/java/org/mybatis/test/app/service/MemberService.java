@@ -40,6 +40,31 @@ public class MemberService {
         return idPassMember;
     }
 
+//    public String updateMember(MemberDto member) {
+//
+//        MemberDto checkMember = updateCheck(member);
+//
+//    }
+
+    public MemberDto updateCheck(MemberDto member) {
+
+        MemberDto existedMember = mapper.findByMember(member.getMemberId());
+
+        if (member.getPw()==null || member.getPw().isBlank()) {
+            member.setPw(existedMember.getPw());
+        }
+        if (member.getName()==null || member.getName().isBlank()) {
+            member.setName(existedMember.getName());
+        }
+        if (member.getGender()==null || member.getGender().isBlank()) {
+            member.setGender(existedMember.getGender());
+        }
+        if (member.getEmail()==null || member.getEmail().isBlank()) {
+            member.setEmail(existedMember.getEmail());
+        }
+        return member;
+    }
+
     public String joinCheck(final MemberDto member) {
 
         if (mapper.findByMember(member.getMemberId()) != null) {

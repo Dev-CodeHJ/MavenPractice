@@ -38,6 +38,7 @@ public class MemberController {
         member.setGender(request.getParameter("gender"));
         member.setEmail(request.getParameter("email"));
 
+        service.updateMember(member);
 
         model.addAttribute("check", 2);
 

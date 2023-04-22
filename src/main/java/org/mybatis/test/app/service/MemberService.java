@@ -28,23 +28,22 @@ public class MemberService {
 
     public Optional<MemberDto> login(String memberId, String pw) {
 
-        System.out.println("service.login");
-        Optional<MemberDto> idPassMember = Optional.ofNullable(mapper.findByMember(memberId));
-        System.out.println("idPassMember = " + idPassMember);
+        Optional<MemberDto> loginMember = Optional.ofNullable(mapper.login(memberId, pw));
 
-        if (idPassMember.isEmpty()) {
-            System.out.println("memberId.Empty");
-        } else if (idPassMember.get().getPw().equals(pw)) {
-            System.out.println("pw.OK");
+        if (loginMember.isEmpty()) {
+            if (Optional.ofNullable(mapper.findByMember(memberId)).isEmpty()) {
+                System.out.println("invalid memberId");
+            }else {
+                System.out.println("invalid password");
+            }
         }
-        return idPassMember;
+        return loginMember;
     }
 
-//    public String updateMember(MemberDto member) {
-//
-//        MemberDto checkMember = updateCheck(member);
-//
-//    }
+    public void updateMember(MemberDto member) {
+        MemberDto checkMember = updateCheck(member);
+        mapper.updateMember(checkMember);
+    }
 
     public MemberDto updateCheck(MemberDto member) {
 

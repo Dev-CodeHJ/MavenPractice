@@ -82,18 +82,31 @@ class MemberMapperTest {
     @Test
     void updateMember() {
         //given
-        MemberDto member1 = new MemberDto();
-        member1.setPw("123");
-        member1.setName("춘향");
-        member1.setGender("여자");
-        member1.setEmail("ch@naver.com");
+        MemberDto member = MemberDto.builder()
+                .memberId("gnlwls0127")
+                .pw("1234")
+                .name("김휘진")
+                .gender("남자")
+                .email("hj@naver.com")
+                .build();
+        mapper.join(member);
+
+        MemberDto member1 = MemberDto.builder()
+                .memberId("gnlwls0127")
+                .pw("123")
+                .name("춘향")
+                .gender("여자")
+                .email("ch@naver.com")
+                .build();
 
         //when
         mapper.updateMember(member1);
+        MemberDto existMember = mapper.findByMember(member.getMemberId());
 
         //then
-        assertThat(member1.getPw()).isEqualTo("123");
+        assertThat(member1).isEqualTo(existMember);
         System.out.println("member1 = " + member1);
+        System.out.println("existMember = " + existMember);
     }
 
     @Test

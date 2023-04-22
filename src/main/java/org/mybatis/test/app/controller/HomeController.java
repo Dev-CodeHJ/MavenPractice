@@ -101,9 +101,22 @@ public class HomeController {
             session.setAttribute("loginMember", loginMember);
             System.out.println("loginMember = " + loginMember);
 
+            String member_id = loginMember.get().getMemberId();
+            String pw = loginMember.get().getPw();
             String name = loginMember.get().getName();
+            String gender = loginMember.get().getGender();
+            String email = loginMember.get().getEmail();
+
+            session.setAttribute("member_id",member_id);
+            session.setAttribute("pw",pw);
             session.setAttribute("name",name);
+            session.setAttribute("gender",gender);
+            session.setAttribute("email",email);
+            System.out.println("member_id = " + member_id);
+            System.out.println("pw = " + pw);
             System.out.println("name = " + name);
+            System.out.println("gender = " + gender);
+            System.out.println("email = " + email);
 
             model.addObject("msg", "ok");
         }

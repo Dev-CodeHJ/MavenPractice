@@ -82,10 +82,10 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="updateMember">회원정보 수정</a>
-                                        <a class="dropdown-item" href="#!">회원 탈퇴</a>
-                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="updateMember">내 정보 / 변경</a>
                                         <a class="dropdown-item" href="logout">로그아웃</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#!">회원 탈퇴</a>
                                     </div>
                                 </li>
                             </ul>

@@ -25,9 +25,14 @@
 
                             <script type="text/javascript">
                                 var check = "${check}";
+                                var message = "${msg}";
                                     if(check==2){
+                                        if(message=="error"){
+                                            alert("비밀번호가 일치하지 않습니다.")
+                                        } else {
                                         alert("회원정보가 수정되었습니다.");
                                         location.href='/';
+                                        }
                                     }
                             </script>
                             <h2 class="fw-bold mb-4 text-uppercase ">내 정보</h2>
@@ -39,13 +44,15 @@
 
                             <div class="mb-4">
                                 <label for="password" class="form-label ">비밀번호</label>
-                                <div class="mb-1"><input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호를 입력해주세요."></div>
-                                <input type="password" class="form-control" name="pw" id="pw" placeholder="한 번 더 입력해주세요.">
+                                <div class="mb-1">
+                                <input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호를 입력해주세요.">
+                                </div>
+                                <input type="password" class="form-control" name="pw1" id="pw1" placeholder="한 번 더 입력해주세요.">
                             </div>
 
                             <div class="mb-4">
                                 <label for="text" class="form-label ">이름</label>
-                                <input type="text" class="form-control" name = "name" id="name">
+                                <input type="text" class="form-control" name = "name" id="name" value="<%= session.getAttribute("name") %>">
                             </div>
                             <div class="col-md-6 mb-3">
 
@@ -53,13 +60,17 @@
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender" id="maleGender"
-                                           value="남자" checked/>
+                                           value="남자" <% if(session.getAttribute("gender").equals("남자")){ %>
+                                           checked
+                                           <% } %>/>
                                     <label class="form-check-label" for="maleGender">남자</label>
                                 </div>
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender" id="femaleGender"
-                                           value="여자" />
+                                           value="여자" <% if(session.getAttribute("gender").equals("여자")){ %>
+                                           checked
+                                           <% } %>/>
                                     <label class="form-check-label" for="femaleGender">여자</label>
                                 </div>
 
@@ -67,7 +78,7 @@
 
                             <div class="mb-4">
                                 <label for="email" class="form-label ">이메일</label>
-                                <input type="email" class="form-control" name="email" id="email">
+                                <input type="email" class="form-control" name="email" id="email" value="<%= session.getAttribute("email") %>">
                             </div>
 
                             <div class="d-grid">

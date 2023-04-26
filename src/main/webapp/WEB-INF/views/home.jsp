@@ -56,6 +56,22 @@
 
     <!-- 로그인 했을 경우 -->
     <% } else { %>
+                    <script type="text/javascript">
+
+                    function updateCheck(){
+
+                        var pw = "<%= session.getAttribute("pw") %>";
+                        var enteredPW = prompt("비밀번호를 입력하세요.");
+
+                        if(pw.equals(enteredPW){
+                            location.href="/updateMember";
+                            return true;
+                        } else {
+                            alert("비밀번호가 올바르지 않습니다.");
+                            return false;
+                        }
+                    }
+                    </script>
 
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
@@ -82,10 +98,11 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">마이페이지</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="updateMember">내 정보 / 변경</a>
+                                        <a class="dropdown-item" href='javascript:void(0);' onclick="updateCheck();">내 정보 / 변경</a>
                                         <a class="dropdown-item" href="logout">로그아웃</a>
+                                        <button class="dropdown-item" type="submit" onclick="updateCheck(); return false;">테스트</button>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!">회원 탈퇴</a>
+                                        <a class="dropdown-item" href="#!" onclick="return check();">회원 탈퇴</a>
                                     </div>
                                 </li>
                             </ul>

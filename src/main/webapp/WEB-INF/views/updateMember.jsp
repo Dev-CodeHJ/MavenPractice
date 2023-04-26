@@ -30,7 +30,7 @@
                                         if(message=="error"){
                                             alert("비밀번호가 일치하지 않습니다.")
                                         } else {
-                                        alert("회원정보가 수정되었습니다.");
+                                        alert("회원정보가 수정되었습니다. 다시 로그인 해주세요!");
                                         location.href='/logout';
                                         }
                                     }

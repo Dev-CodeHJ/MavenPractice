@@ -35,7 +35,6 @@ public class MemberController {
 
         System.out.println(request.getParameter("pw"));
         System.out.println(request.getParameter("pw1"));
-        System.out.println(request.getSession());
         if (request.getParameter("pw").equals(request.getParameter("pw1"))) {
             member.setMemberId(request.getParameter("member_id"));
             member.setPw(request.getParameter("pw"));

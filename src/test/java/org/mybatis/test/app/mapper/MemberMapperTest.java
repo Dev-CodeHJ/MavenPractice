@@ -113,7 +113,7 @@ class MemberMapperTest {
     void deleteMember() {
         //given
         MemberDto member = MemberDto.builder()
-                .memberId("gnlwls0127")
+                .memberId("gnlwls01271")
                 .pw("1234")
                 .name("김휘진")
                 .gender("남자")
@@ -131,10 +131,12 @@ class MemberMapperTest {
         mapper.join(member1);
 
         //when
-        mapper.deleteMember(member);
+        mapper.deleteMember("gnlwls01271", "1234");
 
         //then
-        assertThat(mapper.findByMember(member.getMemberId())).isNull();
-        System.out.println("mapper = " + mapper.findByMember(member.getMemberId()));
+        assertThat(mapper.findByMember("gnlwls01271")).isNull();
+        assertThat(mapper.findByMember("cnsgid")).isNotNull();
+        System.out.println("member = " + mapper.findByMember("gnlwls01271"));
+        System.out.println("member1 = " + mapper.findByMember("cnsgid"));
     }
 }

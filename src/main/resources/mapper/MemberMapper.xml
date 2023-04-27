@@ -51,7 +51,7 @@
             member_id = #{memberId}
     </update>
 
-    <delete id="deleteMember" parameterType="MemberDto">
+    <delete id="deleteMember" parameterType="String">
         delete from member_dto
         where
             member_id = #{memberId}

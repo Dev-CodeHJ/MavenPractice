@@ -10,5 +10,5 @@ public interface MemberMapper {
 
     void join(MemberDto member);
     void updateMember(MemberDto member);
-    void deleteMember(MemberDto member);
+    void deleteMember(String memberId, String pw);
 }

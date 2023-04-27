@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @AllArgsConstructor
@@ -47,5 +48,23 @@ public class MemberController {
             model.addAttribute("msg", "error");
         }
         return "updateMember";
+    }
+
+    @GetMapping("/deleteMember")
+    public String deleteMember(Model model, HttpServletRequest request) {
+
+        System.out.println("delete");
+        HttpSession session = request.getSession();
+
+        String memberId = (String) session.getAttribute("member_id");
+        String pw = (String) session.getAttribute("dPw");
+        System.out.println("memberId = " + memberId);
+        System.out.println("pw = " + pw);
+
+        String msg = service.deleteMember(memberId, pw);
+        System.out.println("msg = " + msg);
+        model.addAttribute("msg", msg);
+
+        return "deleteMember";
     }
 }

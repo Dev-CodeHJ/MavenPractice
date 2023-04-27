@@ -105,4 +105,24 @@ class MemberServiceTest {
         System.out.println("nonMemberId = " + nonMemberId);
         System.out.println("nonPw = " + nonPw);
     }
+
+    @Test
+    void deleteMember() {
+        //given
+        MemberDto member = MemberDto.builder()
+                .memberId("gnlwls01271")
+                .pw("1234")
+                .name("김휘진")
+                .gender("남자")
+                .email("gnlwls0127@naver.com")
+                .build();
+        mapper.join(member);
+
+        //when
+        String msg = service.deleteMember(member.getMemberId(), member.getPw());
+
+        //then
+        assertThat(msg).isEqualTo("ok");
+        System.out.println("member = " + member);
+    }
 }

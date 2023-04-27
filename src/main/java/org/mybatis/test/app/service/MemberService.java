@@ -87,4 +87,15 @@ public class MemberService {
         }
         return "ok";
     }
+
+    public String deleteMember(String memberId, String pw) {
+
+        MemberDto member = mapper.findByMember(memberId);
+        if (member.getPw().equals(pw)) {
+            mapper.deleteMember(memberId, pw);
+            return "ok";
+        } else {
+            return "fail";
+        }
+    }
 }

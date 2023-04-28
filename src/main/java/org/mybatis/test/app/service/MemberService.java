@@ -90,11 +90,15 @@ public class MemberService {
 
     public String deleteMember(String memberId, String pw) {
 
+        System.out.println("service");
+        System.out.println("pw = " + pw);
         MemberDto member = mapper.findByMember(memberId);
         if (member.getPw().equals(pw)) {
             mapper.deleteMember(memberId, pw);
+            System.out.println("ok");
             return "ok";
         } else {
+            System.out.println("fail");
             return "fail";
         }
     }

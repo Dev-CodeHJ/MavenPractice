@@ -1,12 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script type="text/javascript">
     var message = "${msg}";
-        if(message=="ok"){
-            if(confirm('정말로 탈퇴하시겠습니까?')){
-                alert("탈퇴되셨습니다.");
-                location.href='/';
-            }
-        }else if(message=="fail"){
-            alert("비밀번호가 올바르지 않습니다.");
-        }
+    if(message=="ok"){
+        alert("회원이 탈퇴되셨습니다.");
+        location.href='/logout';
+    } else{
+        alert("회원 탈퇴가 정상적으로 이루어지지 않았습니다.");
+        location.href='/';
+    }
 </script>

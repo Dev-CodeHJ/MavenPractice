@@ -57,14 +57,13 @@ public class MemberController {
         HttpSession session = request.getSession();
 
         String memberId = (String) session.getAttribute("member_id");
-        String pw = (String) session.getAttribute("dPw");
+        String pw = (String) session.getAttribute("pw");
         System.out.println("memberId = " + memberId);
         System.out.println("pw = " + pw);
 
         String msg = service.deleteMember(memberId, pw);
         System.out.println("msg = " + msg);
         model.addAttribute("msg", msg);
-
         return "deleteMember";
     }
 }

@@ -58,22 +58,31 @@
     <% } else { %>
 
         <script type="text/javascript">
-            var  = promptPw();
-
             function check(){
                 var pw = "<%= session.getAttribute("pw") %>";
-                var enteredPW = promptPw();
+                var enteredPw = prompt("비밀번호를 입력하세요.");
 
-                if(pw == enteredPW){
-                    return true;
-                } else {
-                    alert("비밀번호가 올바르지 않습니다.");
+                if(enteredPw != null){
+                    if(pw == enteredPw){
+                        return true;
+                    } else{
+                        alert("비밀번호가 올바르지 않습니다.");
+                        return false;
+                    }
+                } else{
                     return false;
                 }
             }
-            function promptPw(){
-                var pw = prompt("비밀번호를 입력하세요.");
-                return pw;
+            function delCheck(){
+                if(check()==true){
+                    if(confirm('정말로 탈퇴하시겠습니까?')){
+                        return ture;
+                    }else{
+                        return false;
+                    }
+                }else{
+                    return false;
+                }
             }
         </script>
 
@@ -105,7 +114,7 @@
                                         <a class="dropdown-item" href="updateMember" onclick="return check();">내 정보 / 변경</a>
                                         <a class="dropdown-item" href="logout" onclick="return confirm('로그아웃 하시겠습니까?');">로그아웃</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="deleteMember" onclick="return check();">회원 탈퇴</a>
+                                        <a class="dropdown-item" href="deleteMember" onclick="return delCheck();">회원 탈퇴</a>
                                     </div>
                                 </li>
                             </ul>

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -93,17 +94,17 @@ class MemberServiceTest {
         mapper.join(member);
 
         //when
-        Optional<MemberDto> loginMember = service.login("gnlwls0127", "1234");
-        Optional<MemberDto> nonMemberId = service.login("gnlwls012", "1234");
-        Optional<MemberDto> nonPw = service.login("gnlwls0127", "123");
+        String loginMember = service.login("gnlwls0127", "1234");
+        String invalidMemberId = service.login("gnlwls012", "1234");
+        String invalidPw = service.login("gnlwls0127", "123");
 
         //then
-        assertThat(loginMember).isEqualTo(Optional.of(member));
-        assertThat(nonMemberId).isEmpty();
-        assertThat(nonPw).isEmpty();
+        assertThat(loginMember).isEqualTo("ok");
+        assertThat(invalidMemberId).isEqualTo("memberId");
+        assertThat(invalidPw).isEqualTo("pw");
         System.out.println("loginMember = " + loginMember);
-        System.out.println("nonMemberId = " + nonMemberId);
-        System.out.println("nonPw = " + nonPw);
+        System.out.println("invalidMemberId = " + invalidMemberId);
+        System.out.println("invalidPw = " + invalidPw);
     }
 
     @Test

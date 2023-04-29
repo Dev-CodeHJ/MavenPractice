@@ -86,45 +86,35 @@ public class HomeController {
     @PostMapping("login")
     public ModelAndView login(ModelAndView model, HttpServletRequest request) {
 
-
         System.out.println("controller.login");
 
-        MemberDto member = new MemberDto();
+        String memberId = request.getParameter("member_id");
+        String pw = request.getParameter("pw");
 
-        Optional<MemberDto> loginMember = memberService.login(request.getParameter("member_id"),request.getParameter("pw"));
+        String msg = memberService.login(memberId, pw);
         model.addObject("check", 2);
+        model.addObject("msg", msg);
 
-        if (loginMember.isEmpty()) {
-            model.addObject("msg", "empty");
-        } else {
+        if (msg.equals("ok")) {
+            MemberDto loginMember = memberService.loginSuccess(memberId, pw);
             HttpSession session = request.getSession();
             session.setAttribute("loginMember", loginMember);
-            System.out.println("loginMember = " + loginMember);
-
-            String member_id = loginMember.get().getMemberId();
-            String pw = loginMember.get().getPw();
-            String name = loginMember.get().getName();
-            String gender = loginMember.get().getGender();
-            String email = loginMember.get().getEmail();
-
-            session.setAttribute("member_id",member_id);
-            session.setAttribute("pw",pw);
-            session.setAttribute("name",name);
-            session.setAttribute("gender",gender);
-            session.setAttribute("email",email);
-            System.out.println("member_id = " + member_id);
-            System.out.println("pw = " + pw);
-            System.out.println("name = " + name);
-            System.out.println("gender = " + gender);
-            System.out.println("email = " + email);
-
-            model.addObject("msg", "ok");
+            session.setAttribute("member_id", loginMember.getMemberId());
+            session.setAttribute("pw", loginMember.getPw());
+            session.setAttribute("name", loginMember.getName());
+            session.setAttribute("gender", loginMember.getGender());
+            session.setAttribute("email", loginMember.getEmail());
         }
         return model;
     }
 
     @GetMapping("/logout")
-    public String logout(Model model) {
+    public String logout(HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
         return "logout";
     }
 }

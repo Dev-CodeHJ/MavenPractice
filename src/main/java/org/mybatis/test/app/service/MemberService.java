@@ -26,18 +26,24 @@ public class MemberService {
         return msg;
     }
 
-    public Optional<MemberDto> login(String memberId, String pw) {
+    public String login(String memberId, String pw) {
 
-        Optional<MemberDto> loginMember = Optional.ofNullable(mapper.login(memberId, pw));
+        MemberDto member = loginSuccess(memberId, pw);
 
-        if (loginMember.isEmpty()) {
-            if (Optional.ofNullable(mapper.findByMember(memberId)).isEmpty()) {
+        if (member == null) {
+            if (mapper.findByMember(memberId) == null) {
                 System.out.println("invalid memberId");
+                return "memberId";
             }else {
                 System.out.println("invalid password");
+                return "pw";
             }
         }
-        return loginMember;
+        return "ok";
+    }
+
+    public MemberDto loginSuccess(String memberId, String pw) {
+        return mapper.login(memberId, pw);
     }
 
     public void updateMember(MemberDto member) {

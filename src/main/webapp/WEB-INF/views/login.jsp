@@ -23,13 +23,15 @@
                     <script type="text/javascript">
 
                     var check = "${check}";
-                    var message = "${msg}";
+                    var msg = "${msg}";
                         if(check==2){
-                            if(message=="ok"){
+                            if(msg=="ok"){
                                 alert("로그인에 성공하셨습니다.");
                                 location.href='/';
+                            }else if(msg=="memberId"){
+                                alert("존재하지 않는 아이디입니다.");
                             }else{
-                                alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+                                alert("비밀번호가 올바르지 않습니다.");
                             }
                         }
                     </script>

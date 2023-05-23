@@ -37,15 +37,21 @@ public class MemberController {
         System.out.println(request.getParameter("pw"));
         System.out.println(request.getParameter("pw1"));
         if (request.getParameter("pw").equals(request.getParameter("pw1"))) {
-            member.setMemberId(request.getParameter("member_id"));
-            member.setPw(request.getParameter("pw"));
-            member.setName(request.getParameter("name"));
-            member.setGender(request.getParameter("gender"));
-            member.setEmail(request.getParameter("email"));
 
-            service.updateMember(member);
+            if (request.getParameter("pw").isBlank()) {
+                model.addAttribute("msg", "blankError");
+            } else {
+                member.setMemberId(request.getParameter("member_id"));
+                member.setPw(request.getParameter("pw"));
+                member.setName(request.getParameter("name"));
+                member.setGender(request.getParameter("gender"));
+                member.setEmail(request.getParameter("email"));
+
+                service.updateMember(member);
+            }
+
         } else {
-            model.addAttribute("msg", "error");
+            model.addAttribute("msg", "matchError");
         }
         return "updateMember";
     }

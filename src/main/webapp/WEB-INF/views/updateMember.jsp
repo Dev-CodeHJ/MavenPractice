@@ -27,11 +27,13 @@
                                 var check = "${check}";
                                 var message = "${msg}";
                                     if(check==2){
-                                        if(message=="error"){
+                                        if(message=="matchError"){
                                             alert("비밀번호가 일치하지 않습니다.")
+                                        } else if(message=="blankError") {
+                                            alert("비밀번호에는 공백이 들어갈 수 없습니다.")
                                         } else {
-                                        alert("회원정보가 수정되었습니다. 다시 로그인 해주세요!");
-                                        location.href='/logout';
+                                            alert("회원정보가 수정되었습니다. 다시 로그인 해주세요!");
+                                            location.href='/logout';
                                         }
                                     }
                             </script>
@@ -45,9 +47,9 @@
                             <div class="mb-4">
                                 <label for="password" class="form-label ">비밀번호</label>
                                 <div class="mb-1">
-                                <input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호를 입력해주세요.">
+                                <input type="password" class="form-control" name="pw" id="pw" value="<%= session.getAttribute("pw") %>" placeholder="비밀번호를 입력해주세요.">
                                 </div>
-                                <input type="password" class="form-control" name="pw1" id="pw1" placeholder="한 번 더 입력해주세요.">
+                                <input type="password" class="form-control" name="pw1" id="pw1" value="<%= session.getAttribute("pw") %>" placeholder="한 번 더 입력해주세요.">
                             </div>
 
                             <div class="mb-4">

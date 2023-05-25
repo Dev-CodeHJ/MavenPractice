@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>메인페이지</title>
+    <title>게시판</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -43,8 +43,25 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <h1 class="mt-4">홈페이지</h1>
-                    <p>로그인 후 사용해 주세요</p>
+
+                    <div class="container">
+                        <div class="row">
+                            <table class="table table-striped" style="text-align:center; border :1px solid #dddddd" > <%-- 홀,짝 행 구분 --%>
+                                <thead>
+                                    <tr>
+                                        <th style="background-color : #eeeeeee; text-align:center;">번호</th>
+                                        <th style="background-color : #eeeeeee; text-align:center;">제목</th>
+                                        <th style="background-color : #eeeeeee; text-align:center;">내용</th>
+                                        <th style="background-color : #eeeeeee; text-align:center;">작성자</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -115,8 +132,27 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <h1 class="mt-4">홈페이지</h1>
-                    <h4 class="mt-3"> <%= session.getAttribute("name") %>님, 환영합니다.</h4>
+
+                    <div class="container">
+                        <div class="row">
+                            <table class="table table-striped" style="text-align:center; border :1px solid #dddddd" > <%-- 홀,짝 행 구분 --%>
+                                <thead>
+                                    <tr>
+                                        <th style="background-color : #eeeeeee; text-align:center;">번호</th>
+                                        <th style="background-color : #eeeeeee; text-align:center;">제목</th>
+                                        <th style="background-color : #eeeeeee; text-align:center;">내용</th>
+                                        <th style="background-color : #eeeeeee; text-align:center;">작성자</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+
+                            <a href='writer.jsp' class="btn btn-primary pull-right">글쓰기</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
